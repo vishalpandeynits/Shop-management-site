@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h1 class="text-center lead"style="font-size:2em;font-weight:bold;color:green;">LOG IN</h1>
+<form method="post" novalidate >{% csrf_token %}
+{{ form|crispy }}<br>
+<button type="submit" class='btn btn-primary btn-block' value="LOG IN">LOG IN</button> <br>
+<a href="{% url 'password_reset' %}">Forgot Password?</a> <br><br>
+</form>
+
+{% endblock %}

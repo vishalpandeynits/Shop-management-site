@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form style="float:right;"method="GET" class="form-inline ml-auto mb-4">
+      <input name="search" class="form-control mr-sm-2" type="search" placeholder="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button><br>
+</form>
+
+<table class="table table-hover table-striped">
+  <thead>
+  <tr>
+    <th> Name </th>
+    <th> Position  </th>
+    <th> Phone Number </th>
+    <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+{% for i in emp %}
+    <tr>
+        <td>{{ i.employee_name }}</td>
+        <td>{{ i.id }}</td>
+        <td>{{ i.employee_position }}</td>
+        <td> {{ i.phone_number }}</td>
+        <td>
+            <a class="btn btn-danger" href="/employee/delete/{{i.id}}"onclick="return confirm('Are you sure you want to delete this?')" >Remove</a>
+            <a class="btn btn-primary" href="/employee/full_info/{{i.id}}"> Full Info </a>
+        </td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+<button type="button" href="{% url 'employee' %}"class="btn btn-primary" onclick="myfunction()"> Add an Employee </button><br>
+
+<form style="display:none;" id="form" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+{{ form|crispy}}<br>
+<input type="submit" value="submit">
+</form>
+
+<script>
+function myfunction(){
+    if (document.getElementById('form').style.display=="none"){
+        document.getElementById('form').style.display="block";
+    }
+    else{
+        document.getElementById('form').style.display="none"
+    }  
+}
+</script>
+{% endblock %}

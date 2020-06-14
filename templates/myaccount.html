@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div style="font-weight:bold;"class="text-center">
+<button type="button" class="btn btn-primary" onclick="myfunction()"> Update/Add Information</button><br>
+    {% if shop_info %}
+    <div class="row" style="float:right;">
+    <div style="text-align:left;"class="col-md-12 col-sm-12">
+    Shop Name: {{ shop_info.shop_name }}<br>
+    Shop Owner Name: {{ shop_info.shop_owner_name }}<br>
+    Owner Mobile: {{ shop_info.shop_owner_mobile }}<br>
+    Telephone Number: {{ shop_info.telephone_number }}<br>
+    Shop Type: {{ shop_info.shop_type }}<br>
+    Email: {{ user.email }}<br>
+    GST_IN: {{ shop_info.GST_IN }}<br>
+    Address: {{ shop_info.address }}<br>
+    City: {{ shop_info.city }}<br>
+    State: {{ shop_info.state }}<br>
+    Bank Account Number: {{ shop_info.bank_account_no }}<br>
+    IFSC Code: {{ shop_info.IFSC_CODE }}<br>
+    </div>
+    </div>
+    {% endif %}
+    
+</div>
+
+<form style="display:none;" id="form" method="POST"> {% csrf_token %}
+    {{ form|crispy }}
+    <div class='resp_code frms'>
+    <div id="selection">
+    State* <br> <select name="state" id="listBox" onchange='selct_district(this.value)'></select><br>
+    City * <br> <select name="city" id='secondlist'></select><br>
+    </div>
+    </div>
+	<input class="btn btn-primary "type="submit" value="submit">
+</form>
+
+<script>
+function myfunction(){
+    if (document.getElementById('form').style.display=="none"){
+        document.getElementById('form').style.display="block";
+    }
+    else{
+        document.getElementById('form').style.display="none"
+    }  
+}
+</script>
+{% include 'cityjs.html' %}
+{% endblock %}

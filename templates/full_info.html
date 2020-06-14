@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+  <img src="{{employer.photo.url}}" height="200px" width="200px">
+</center><br><br>
+
+<div style="margin-left:20px;"> 
+  Name: {{employer.employee_name}}<span style="float:right;"> Date Joined: {{employer.date_joined }}</span> <br>
+  Position:{{employer.employee_position}}<span style="float:right;"> last Updated: {{employer.last_updated }}</span> <br>
+  E-mail: {{ employer.email }}<br>
+  Bank Account No. : {{ employer.bank_account_no }}<br>
+  IFSC CODE : {{ employer.IFSC_CODE }}<br>
+  Full Address : {{ employer.full_address }}<br>
+</div>
+
+<button class="btn btn-primary" data-toggle="collapse" data-target="#demo" >Salary Information </button>
+
+<br>
+<div id="demo" class="collapse">
+  <div class="row mt-4">
+    <div slass="col-4 m-4 float-left">
+      <a href="?salary=2018">Year 2018</a><br>
+      <a href="?salary=2018">Year 2019</a><br>
+      <a href="?salary=2018">Year 2020</a><br>
+    </div>
+
+  <div class="col-11"style="float:right;">
+    <table class="table float-right table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Month</th>
+          <th scope="col">Salary</th>
+          <th scope="col">Increment/Decrement</th>
+          <th scope="col">Reason</th>
+          <th scope="col">Payment Info </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th>January</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>February</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>March</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>April</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>May</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>June</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>July</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>August</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>September</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>October</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>November</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>December</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+  </table>
+  </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row ">
+
+    <div class="col-4">
+    <button class="btn btn-primary" data-toggle="collapse" data-target="#demo" >Add an Item</button>
+    <button class="btn btn-primary">Issue an item</button>
+    <form method="POST" enctype="multipart/form-data" id="demo" class="collapse" >{% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" value="submit">
+    </form>
+    </div>
+
+    <div class="col-8 mb-2">
+        <form style="float:right;"method="GET" class="form-inline ml-auto mb-4">
+            <input name="item_search" class="form-control mr-sm-2" type="search" placeholder="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button><br>
+        </form>
+        <h3> List of items</h3>
+        {% for item in items %}
+            <div style="height:125px;width:100%;padding:5px;border:1px solid black;">
+            <img src="{{item.item_image.url}}" height="110px"style="border-radius:50%;float:left;" width="110px">
+            <div style="font-size:0.9em;">
+                &emsp;Item: {{ item.item_name}}<br>
+                &emsp;Category: {{ item.item_category }}<br>
+                &emsp;Price: {{ item.item_price }}<br>
+                &emsp;Quantity: {{ item.stock }}
+            </div>
+            </div><br>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
